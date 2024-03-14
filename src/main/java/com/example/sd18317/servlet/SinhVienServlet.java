@@ -8,7 +8,9 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "SinhVienServlet", value = "/sinh-vien/trang-chu")
+@WebServlet(name = "SinhVienServlet", value = {"/sinh-vien/trang-chu",
+        "/sinh-vien/add"
+})
 public class SinhVienServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +29,7 @@ public class SinhVienServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Da chay vao post");
+        String ma = request.getParameter("maSinhVien");
+
     }
 }

@@ -14,12 +14,50 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="container">
-<h1>Day la trang sinh vien</h1>
-<h1>Ma sinh vien: ${sinhVien.getMaSinhVien()}</h1>
-<h1>Ho ten sinh vien: ${sinhVien.getTenSinhVien()}</h1>
-<h1>Dia chi sinh vien: ${sinhVien.diaChi}</h1>
 
-
+<form action="/sinh-vien/add" method="post">
+    <div class="mb-3">
+        <label class="form-label">Ma sinh vien</label>
+        <input type="text" class="form-control" name="maSinhVien">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ten sinh vien</label>
+        <input type="text" class="form-control" name="tenSinhVien">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tuoi</label>
+        <input type="text" class="form-control" name="tuoi">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Dia Chi</label>
+        <input type="text" class="form-control" name="diaChi">
+    </div>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Ten lop</label>
+        <select id="disabledSelect" class="form-select">
+            <option>SD123</option>
+            <option>SD124</option>
+            <option>SD125</option>
+        </select>
+    </div>
+    <div class="row">
+        <p class="col-4"> Gioi tinh
+        </p>
+        <div class="form-check col-4">
+            <input class="form-check-input" type="radio" value="Nam" name="gioiTinh">
+            <label class="form-check-label">
+                Nam
+            </label>
+        </div>
+        <div class="form-check col-4">
+            <input class="form-check-input" type="radio" value="Nu" name="gioiTinh">
+            <label class="form-check-label">
+                Nu
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 <table class="table">
     <thead>
     <tr>
