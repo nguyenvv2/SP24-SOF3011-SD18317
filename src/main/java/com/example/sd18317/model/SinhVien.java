@@ -19,4 +19,6 @@ public class SinhVien {
 
     private Integer tuoi;
 
+    private String gioiTinh;
+
 }

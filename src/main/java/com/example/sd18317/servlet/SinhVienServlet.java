@@ -23,9 +23,9 @@ public class SinhVienServlet extends HttpServlet {
         list.add("SD124");
         list.add("SD125");
         list.add("SD126");
-        listSinhVien.add(new SinhVien("123", "Nguyen Van A", "HN", 23));
-        listSinhVien.add(new SinhVien("124", "Nguyen Van B", "HN", 23));
-        listSinhVien.add(new SinhVien("125", "Nguyen Van C", "HN", 23));
+        listSinhVien.add(new SinhVien("123", "Nguyen Van A", "HN", 23, "Nam"));
+        listSinhVien.add(new SinhVien("124", "Nguyen Van B", "HN", 23, "Nam"));
+        listSinhVien.add(new SinhVien("125", "Nguyen Van C", "HN", 23, "Nu"));
     }
 
     ArrayList<SinhVien> listSinhVien = new ArrayList<>();
@@ -89,7 +89,7 @@ public class SinhVienServlet extends HttpServlet {
         String ten = request.getParameter("tenSinhVien");
         String diaChi = request.getParameter("diaChi");
         Integer tuoi = Integer.parseInt(request.getParameter("tuoi"));
-        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi);
+        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi, "");
         listSinhVien.add(sinhVien);
         String hoTen = request.getParameter("hoTen");
         list.add(hoTen);

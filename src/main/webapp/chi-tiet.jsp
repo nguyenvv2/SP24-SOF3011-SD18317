@@ -45,13 +45,16 @@
         <p class="col-4"> Gioi tinh
         </p>
         <div class="form-check col-4">
-            <input class="form-check-input" type="radio" value="Nam" name="gioiTinh">
+            <input class="form-check-input" type="radio" value="Nam" name="gioiTinh"
+            <c:if test="${sinhVien.gioiTinh == 'Nam'}"> checked</c:if>
+            >
             <label class="form-check-label">
                 Nam
             </label>
         </div>
         <div class="form-check col-4">
-            <input class="form-check-input" type="radio" value="Nu" name="gioiTinh">
+            <input class="form-check-input" type="radio" value="Nu" name="gioiTinh"
+                   <c:if test="${sinhVien.gioiTinh == 'Nu'}">checked</c:if>>
             <label class="form-check-label">
                 Nu
             </label>

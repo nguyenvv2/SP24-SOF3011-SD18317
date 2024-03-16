@@ -66,6 +66,7 @@
         <td>Ten Sinh Vien</td>
         <td>Dia Chi</td>
         <td>Tuoi</td>
+        <td>Gioi tinh</td>
         <td>Chuc nang</td>
     </tr>
     </thead>
@@ -77,6 +78,7 @@
             <td>${sinhVien.tenSinhVien}</td>
             <td>${sinhVien.diaChi}</td>
             <td>${sinhVien.tuoi}</td>
+            <td>${sinhVien.gioiTinh}</td>
             <td>
                 <a href="/sinh-vien/detail?maSinhVien=${sinhVien.maSinhVien}" class="btn btn-dark">Chi tiet</a>
             </td>
