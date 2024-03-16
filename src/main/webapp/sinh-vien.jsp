@@ -78,7 +78,7 @@
             <td>${sinhVien.diaChi}</td>
             <td>${sinhVien.tuoi}</td>
             <td>
-                <a href="/sinh-vien/detail" class="btn btn-dark">Chi tiet</a>
+                <a href="/sinh-vien/detail?maSinhVien=${sinhVien.maSinhVien}" class="btn btn-dark">Chi tiet</a>
             </td>
         </tr>
     </c:forEach>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
         "/sinh-vien/trang-chu",// GET
         "/sinh-vien/add",// POST
         "/sinh-vien/detail",// GET
+        "/sinh-vien/update",// POST
 })
 public class SinhVienServlet extends HttpServlet {
 
@@ -22,9 +23,9 @@ public class SinhVienServlet extends HttpServlet {
         list.add("SD124");
         list.add("SD125");
         list.add("SD126");
-        listSinhVien.add(new SinhVien("123", "123", "HN", 23));
-        listSinhVien.add(new SinhVien("124", "123", "HN", 23));
-        listSinhVien.add(new SinhVien("125", "123", "HN", 23));
+        listSinhVien.add(new SinhVien("123", "Nguyen Van A", "HN", 23));
+        listSinhVien.add(new SinhVien("124", "Nguyen Van B", "HN", 23));
+        listSinhVien.add(new SinhVien("125", "Nguyen Van C", "HN", 23));
     }
 
     ArrayList<SinhVien> listSinhVien = new ArrayList<>();
@@ -33,26 +34,65 @@ public class SinhVienServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         if (uri.equals("/sinh-vien/trang-chu")) {
-            request.setAttribute("list", listSinhVien);
-            request.setAttribute("listString", list);
-            request.getRequestDispatcher("/sinh-vien.jsp").forward(request, response);
+            this.hienThi(request, response);
         } else if (uri.equals("/sinh-vien/detail")) {
-            request.getRequestDispatcher("/chi-tiet.jsp").forward(request, response);
+            this.detail(request, response);
         }
+    }
+
+    private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String ma = request.getParameter("maSinhVien");
+        SinhVien sinhVienDetail = new SinhVien();
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getMaSinhVien().equals(ma)) {
+                sinhVienDetail = sinhVien;
+            }
+        }
+        request.setAttribute("listString", list);
+        request.setAttribute("sinhVien", sinhVienDetail);
+        request.getRequestDispatcher("/chi-tiet.jsp").forward(request, response);
+    }
+
+    private void hienThi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("list", listSinhVien);
+        request.setAttribute("listString", list);
+        request.getRequestDispatcher("/sinh-vien.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String ma = request.getParameter("maSinhVien");
-//        String ten = request.getParameter("tenSinhVien");
-//        String diaChi = request.getParameter("diaChi");
-//        Integer tuoi = Integer.parseInt(request.getParameter("tuoi"));
-//        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi);
-//        listSinhVien.add(sinhVien);
+        String uri = request.getRequestURI();
+        if (uri.equals("/sinh-vien/add")) {
+            this.add(request, response);
+        } else if (uri.equals("/sinh-vien/update")) {
+            this.update(request, response);
+        }
+    }
+
+    private void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String ma = request.getParameter("maSinhVien");
+        String ten = request.getParameter("tenSinhVien");
+        String diaChi = request.getParameter("diaChi");
+        Integer tuoi = Integer.parseInt(request.getParameter("tuoi"));
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getMaSinhVien().equals(ma)) {
+                sinhVien.setTenSinhVien(ten);
+                sinhVien.setTuoi(tuoi);
+                sinhVien.setDiaChi(diaChi);
+            }
+        }
+        response.sendRedirect("/sinh-vien/trang-chu");
+    }
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String ma = request.getParameter("maSinhVien");
+        String ten = request.getParameter("tenSinhVien");
+        String diaChi = request.getParameter("diaChi");
+        Integer tuoi = Integer.parseInt(request.getParameter("tuoi"));
+        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi);
+        listSinhVien.add(sinhVien);
         String hoTen = request.getParameter("hoTen");
         list.add(hoTen);
-
-
         response.sendRedirect("/sinh-vien/trang-chu");
     }
 }

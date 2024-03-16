@@ -16,22 +16,22 @@
 </head>
 <body class="container">
 
-<form action="/sinh-vien/add" method="post">
+<form action="/sinh-vien/update" method="post">
     <div class="mb-3">
         <label class="form-label">Ma sinh vien</label>
-        <input type="text" class="form-control" name="maSinhVien">
+        <input type="text" class="form-control" name="maSinhVien" value="${sinhVien.maSinhVien}">
     </div>
     <div class="mb-3">
         <label class="form-label">Ten sinh vien</label>
-        <input type="text" class="form-control" name="tenSinhVien">
+        <input type="text" class="form-control" name="tenSinhVien" value="${sinhVien.tenSinhVien}">
     </div>
     <div class="mb-3">
         <label class="form-label">Tuoi</label>
-        <input type="text" class="form-control" name="tuoi">
+        <input type="text" class="form-control" name="tuoi" value="${sinhVien.tuoi}">
     </div>
     <div class="mb-3">
         <label class="form-label">Dia Chi</label>
-        <input type="text" class="form-control" name="diaChi">
+        <input type="text" class="form-control" name="diaChi" value="${sinhVien.diaChi}">
     </div>
     <div class="mb-3">
         <label for="disabledSelect" class="form-label">Ten lop</label>
