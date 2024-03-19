@@ -34,9 +34,9 @@
     </div>
     <div class="mb-3">
         <label for="disabledSelect" class="form-label">Ten lop</label>
-        <select id="disabledSelect" class="form-select">
+        <select id="disabledSelect" class="form-select" name="lop">
             <c:forEach items="${listString}" var="s">
-                <option>${s}</option>
+                <option value="${s}">${s}</option>
             </c:forEach>
         </select>
     </div>
@@ -67,6 +67,7 @@
         <td>Dia Chi</td>
         <td>Tuoi</td>
         <td>Gioi tinh</td>
+        <td>Lop</td>
         <td>Chuc nang</td>
     </tr>
     </thead>
@@ -79,8 +80,10 @@
             <td>${sinhVien.diaChi}</td>
             <td>${sinhVien.tuoi}</td>
             <td>${sinhVien.gioiTinh}</td>
+            <td>${sinhVien.lop}</td>
             <td>
                 <a href="/sinh-vien/detail?maSinhVien=${sinhVien.maSinhVien}" class="btn btn-dark">Chi tiet</a>
+                <a href="/sinh-vien/delete?maSinhVien=${sinhVien.maSinhVien}" class="btn btn-dark">Xoa</a>
             </td>
         </tr>
     </c:forEach>

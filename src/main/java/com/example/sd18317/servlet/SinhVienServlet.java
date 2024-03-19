@@ -13,6 +13,7 @@ import java.util.ArrayList;
         "/sinh-vien/add",// POST
         "/sinh-vien/detail",// GET
         "/sinh-vien/update",// POST
+        "/sinh-vien/delete",// GET
 })
 public class SinhVienServlet extends HttpServlet {
 
@@ -23,9 +24,9 @@ public class SinhVienServlet extends HttpServlet {
         list.add("SD124");
         list.add("SD125");
         list.add("SD126");
-        listSinhVien.add(new SinhVien("123", "Nguyen Van A", "HN", 23, "Nam"));
-        listSinhVien.add(new SinhVien("124", "Nguyen Van B", "HN", 23, "Nam"));
-        listSinhVien.add(new SinhVien("125", "Nguyen Van C", "HN", 23, "Nu"));
+        listSinhVien.add(new SinhVien("123", "Nguyen Van A", "HN", 23, "Nam","SD123"));
+        listSinhVien.add(new SinhVien("124", "Nguyen Van B", "HN", 23, "Nam","SD1234"));
+        listSinhVien.add(new SinhVien("125", "Nguyen Van C", "HN", 23, "Nu","SD125"));
     }
 
     ArrayList<SinhVien> listSinhVien = new ArrayList<>();
@@ -37,7 +38,20 @@ public class SinhVienServlet extends HttpServlet {
             this.hienThi(request, response);
         } else if (uri.equals("/sinh-vien/detail")) {
             this.detail(request, response);
+        } else if (uri.contains("/sinh-vien/delete")) {
+            this.delete(request, response);
         }
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String ma = request.getParameter("maSinhVien");
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getMaSinhVien().equals(ma)) {
+                listSinhVien.remove(sinhVien);
+                break;
+            }
+        }
+        response.sendRedirect("/sinh-vien/trang-chu");
     }
 
     private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -88,8 +102,10 @@ public class SinhVienServlet extends HttpServlet {
         String ma = request.getParameter("maSinhVien");
         String ten = request.getParameter("tenSinhVien");
         String diaChi = request.getParameter("diaChi");
+        String gioiTinh = request.getParameter("gioiTinh");
+        String lop = request.getParameter("lop");
         Integer tuoi = Integer.parseInt(request.getParameter("tuoi"));
-        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi, "");
+        SinhVien sinhVien = new SinhVien(ma, ten, diaChi, tuoi, gioiTinh,lop);
         listSinhVien.add(sinhVien);
         String hoTen = request.getParameter("hoTen");
         list.add(hoTen);

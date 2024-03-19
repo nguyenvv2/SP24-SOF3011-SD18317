@@ -21,4 +21,6 @@ public class SinhVien {
 
     private String gioiTinh;
 
+    private String lop;
+
 }
